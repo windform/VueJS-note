@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据绑定语法</title>
+	<script src="./lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h2>文本</h2><hr/>
+		<p>一般文本插值：{{message}}</p>
+		<p>单次文本插值：{{*message}}</p>
+		<input type="text" v-model="message"/>
+
+		<h2>原始的HTML</h2><hr/>
+		<p>只能解析纯文本：{{html}}</p>
+		<p>可以解析html标签：{{{html}}}</p>
+
+		<h2>绑定表达式</h2><hr/>
+		<p>运行除法：{{number/5}}</p>
+		<p>三元运算符：{{bool ? '真' : '假'}}</p>
+		<p>逻辑操作：{{message.split('').reverse().join('')}}</p>
+	</div>
+
+	<script>
+	 new Vue({
+	 	el:'#app',
+	 	data:{
+	 		message:'hello',
+	 		html:'<strong>我自带html标签</strong>',
+	 		bool:false,
+	 		number:56,
+	 		todos:[
+	 			{text:'javascript'},
+	 			{text:'ECMAScript'},
+	 			{text:'AngularJS'},
+	 			{text:'NodeJs'}]
+	 	}
+	 })
+	</script>
+</body>
+</html>

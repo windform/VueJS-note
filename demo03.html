@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渲染列表</title>
+	<script src="./lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for = "todo in todos">{{todo.text}}</li>
+		</ul>
+	</div>
+
+	<script>
+	 new Vue({
+	 	el:'#app',
+	 	data:{
+	 		todos:[
+	 			{text:'javascript'},
+	 			{text:'ECMAScript'},
+	 			{text:'AngularJS'},
+	 			{text:'NodeJs'}]
+	 	}
+	 })
+	</script>
+</body>
+</html>

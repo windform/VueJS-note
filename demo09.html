@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Class与Style绑定</title>
+	<script src="./lib/vue.js"></script>
+	<style>
+		.class-a{
+			background-color: #e02222
+		}
+		.class-b{
+			background-color: #0088cc
+		}
+		.static{
+			color: #fff;
+			margin-bottom: 5px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<p>对象语法</p>
+		<ul>
+			<li v-for = "todo in todos" class="static" v-bind:class="{'class-a':isA,'class-b':isB}">{{todo.text}}</li>
+		</ul>
+		<p>数组语法</p>
+		<ul>
+			<li v-for = "todo in todos"  v-bind:class=['static',class-a]>{{todo.text}}</li>
+		</ul>
+	</div>
+
+	<script>
+	 new Vue({
+	 	el:'#app',
+	 	data:{
+	 		isA:false,
+	 		isB:true,
+	 		todos:[
+	 			{text:'javascript'},
+	 			{text:'ECMAScript'},
+	 			{text:'AngularJS'},
+	 			{text:'NodeJs'}]
+	 	}
+	 })
+	</script>
+</body>
+</html>
