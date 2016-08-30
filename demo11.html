@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表渲染</title>
+	<script src="./lib/vue.js"></script>
+	<style>
+		.divider{
+			border-bottom:solid 1px #eee;
+		}
+	</style>
+</head>
+<body>
+	<h3>v-for $index</h3>
+	<ul id="example-1">
+	  <li v-for="item in items">
+	    {{parentMessage}}-{{$index}}-{{ item.message }}
+	  </li>
+	</ul>
+	<hr>
+	<h3>template v-for</h3>
+	<ul id="example-2">
+		<template  v-for="item in items">
+		  <li>{{item.message }}</li>
+		  <div class="divider"></div>
+		</template>
+	</ul>
+	<hr>
+	<h3>变异方法</h3>
+	<ol>
+		<li>push()</li>
+		<li>pop()</li>
+		<li>shift()</li>
+		<li>unshift()</li>
+		<li>splice()</li>
+		<li>sort()</li>
+		<li>reverse()</li>
+	</ol>
+	<hr>
+	<script>
+	 var example1 = new Vue({
+	   el: '#example-1',
+	   data: {
+	   	 parentMessage : 'Parent',
+	     items: [
+	       { message: 'Foo' },
+	       { message: 'Bar' }
+	     ]
+	   }
+	 })
+	 var example2 = new Vue({
+	   el: '#example-2',
+	   data: {
+	     items: [
+	       { message: 'Foo' },
+	       { message: 'Bar' }
+	     ]
+	   }
+	 })
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件渲染</title>
+	<script src="./lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<hr>
+		<h3>v-if</h3>
+		<p v-if="bool">真</p>
+		<p v-else>假</p>
+		<hr>
+		<h3>template v-if</h3>
+		<template v-if="bool">
+			<strong>开学了</strong>
+			<p>大家都不高兴</p>
+		</template>
+		<template v-else>
+			<strong>放假了</strong>
+			<p>大家都很高兴</p>
+		</template>
+		<hr>
+		<h3>v-show</h3>
+		<div v-show="bool">display</div>
+	</div>
+
+	<script>
+	 new Vue({
+	 	el:'#app',
+	 	data:{
+	 		bool : true
+
+	 	}
+	 })
+	</script>
+</body>
+</html>

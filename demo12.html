@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>方法与事件处理器</title>
+	<script src="./lib/vue.js"></script>
+</head>
+<body>
+	<div id="example">
+	  <button v-on:click="greet">方法处理器</button>
+	  <button v-on:click="say('hello！')">内联处理器1</button> 
+	  <button v-on:click="say('how are you?')">内联处理器2</button>
+	  <button v-on:click="say('时间处理器',$event)">内联处理器3</button>
+	</div>
+	<hr>
+	<div id="example1">
+		<h3>事件修饰符</h3>
+		<xmp>
+			<!-- 阻止单击事件冒泡 -->
+			<a v-on:click.stop="doThis"></a>
+			<!-- 提交事件不再重载页面 -->
+			<form v-on:submit.prevent="onSubmit"></form>
+			<!-- 修饰符可以串联 -->
+			<a v-on:click.stop.prevent="doThat">
+			<!-- 只有修饰符 -->
+			<form v-on:submit.prevent></form>
+			<!-- 添加事件侦听器时使用 capture 模式 -->
+			<div v-on:click.capture="doThis">...</div>
+			<!-- 只当事件在该元素本身（而不是子元素）触发时触发回调 -->
+			<div v-on:click.self="doThat">...</div>
+		</xmp>
+	</div>
+	<hr>
+	<div id="example2">
+		<h3>按键修饰符</h3>
+		<input type="button" value="enter"  v-on:keyup.enter="greet"/>
+		<input type="button" value="esc"  v-on:keyup.enter="greet"/>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:'#example',
+			data:{
+				name:'Vue.js'
+			},
+			methods:{
+				greet : function(event){
+					alert('hello,'+this.name+'!');
+					alert(event.target.tagName);
+				},
+				say : function(msg,event){
+					event.preventDefault();
+					alert(msg);
+				}
+			}
+		})
+		var vm = new Vue({
+			el:'#example2',
+			data:{
+				name:'Vue.js'
+			},
+			methods:{
+				greet : function(event){
+					alert(event.keyCode);
+				}
+			}
+		})
+
+	</script>
+
+</body>
+</html>

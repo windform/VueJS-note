@@ -26,8 +26,18 @@
 		</ul>
 		<p>数组语法</p>
 		<ul>
-			<li v-for = "todo in todos"  v-bind:class=['static',class-a]>{{todo.text}}</li>
+			<li v-for = "todo in todos"  v-bind:class="['static','class-a']">{{todo.text}}</li>
 		</ul>
+		<ul>
+			<li v-for = "todo in todos"  v-bind:class="[classStatic,isB ? classB:'']">{{todo.text}}</li>
+		</ul>
+		<ul>
+			<li v-for = "todo in todos"  v-bind:class="[classStatic,{'class-a' : isA , 'class-b': isB }]">{{todo.text}}</li>
+		</ul>
+		<p>绑定内联样式</p>
+		<h4 v-bind:style="{color:'red',fontSize:'30px'}">hello vueJS</h4>
+		<h4 v-bind:style="styleObj">hello vueJS</h4>
+		<h4 v-bind:style="[styleObj,styleObj1]">hello vueJS</h4>
 	</div>
 
 	<script>
@@ -36,6 +46,17 @@
 	 	data:{
 	 		isA:false,
 	 		isB:true,
+	 		classStatic : 'static',
+	 		classA : 'class-a',
+	 		classB : 'class-b',
+	 		styleObj : {
+	 			color:'#0088cc',
+	 			fontSize:'12px',
+	 			textDecoration:'underline'
+	 		},
+	 		styleObj1 : {
+	 			border:'solid 1px #000',
+	 		},
 	 		todos:[
 	 			{text:'javascript'},
 	 			{text:'ECMAScript'},
